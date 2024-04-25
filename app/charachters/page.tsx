@@ -1,8 +1,8 @@
-import LoadMore from "../components/LoadMore";
-import { fetchAnime } from "./action";
+import LoadMore from "../../components/LoadMore";
+import { fetchCharacter } from "../action";
 
-async function Home() {
-  const data = await fetchAnime(1);
+async function CharachterPage() {
+  const data = await fetchCharacter(1);
 
   return (
     <main className="sm:p-16 py-16 px-8 flex flex-col gap-10">
@@ -15,4 +15,4 @@ async function Home() {
   );
 }
 
-export default Home;
+export default CharachterPage;

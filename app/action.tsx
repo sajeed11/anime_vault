@@ -22,14 +22,18 @@ export const fetchCharacter = async (id: number) => {
   const data = await response.json();
 
   console.log(data);
+
+  // return data.map((item: AnimeProp, index: number) => (
+  //   <AnimeCard key={item.id} anime={item} index={index} />
+  // ));
 };
 
-export const fetchManga = async (page: number) => {
-  const response = await fetch(
-    `https://shikimori.one/api/mangas?page${page}&order=popularity`
-  );
+// export const fetchManga = async (page: number) => {
+//   const response = await fetch(
+//     `https://shikimori.one/api/mangas?page${page}&order=popularity`
+//   );
 
-  const data = await response.json();
+//   const data = await response.json();
 
-  console.log(data);
-};
+//   console.log(data);
+// };

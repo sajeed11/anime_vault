@@ -1,6 +1,7 @@
 "use server";
 
 import AnimeCard, { AnimeProp } from "@/components/AnimeCard";
+import CharachterCard, { CharachterProp } from "@/components/CharachterCard";
 
 export const fetchAnime = async (page: number) => {
   const response = await fetch(
@@ -9,23 +10,26 @@ export const fetchAnime = async (page: number) => {
 
   const data = await response.json();
 
-  console.log(data);
-
   return data.map((item: AnimeProp, index: number) => (
     <AnimeCard key={item.id} anime={item} index={index} />
   ));
 };
 
-export const fetchCharacter = async (id: number) => {
-  const response = await fetch(`https://shikimori.one/api/characters/${id}`);
+export const fetchCharacter = async (len: number) => {
+  let listedData = [];
 
-  const data = await response.json();
+  for (let i = 1; i <= len; i++) {
+    const response = await fetch(`https://shikimori.one/api/characters/${i}`);
 
-  console.log(data);
+    if (response != null) {
+      const data = await response.json();
+      listedData.push(data);
+    } else continue;
+  }
 
-  // return data.map((item: AnimeProp, index: number) => (
-  //   <AnimeCard key={item.id} anime={item} index={index} />
-  // ));
+  return listedData.map((item: CharachterProp, index: number) => (
+    <CharachterCard key={item.id} charachter={item} index={index} />
+  ));
 };
 
 // export const fetchManga = async (page: number) => {
